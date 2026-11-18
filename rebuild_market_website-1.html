@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReBuild Market | Don't Waste It. ReBuild With It.</title>
+  <style>
+    :root {
+      --green: #176b4a; --green2: #e8f5ed; --ink: #18332a;
+      --muted: #64756d; --cream: #f7faf7; --line: #dce8df;
+      --gold: #f2c66d; --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--cream); }
+    header { background: #103d2c; color: white; padding: 15px 6%; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+    .brand { font-size: 22px; font-weight: 800; letter-spacing: .3px; }
+    .brand span { color: #a9e2bd; }
+    nav { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    nav a { color: white; text-decoration: none; font-size: 14px; }
+    nav a:hover { color: #a9e2bd; }
+    .hero { padding: 65px 6% 55px; background: linear-gradient(120deg, #e7f4eb, #f9fbf8); display: grid; grid-template-columns: 1.2fr .8fr; gap: 30px; align-items: center; }
+    .eyebrow { color: var(--green); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; }
+    h1 { font-size: clamp(36px, 5vw, 58px); line-height: 1.05; margin: 13px 0; }
+    h1 span { color: var(--green); }
+    .hero p { max-width: 600px; color: #52675c; font-size: 17px; line-height: 1.65; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    button, .btn { border: 0; border-radius: 9px; padding: 12px 18px; background: var(--green); color: white; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; }
+    button:hover, .btn:hover { filter: brightness(.93); }
+    .secondary { background: white; color: var(--green); border: 1px solid var(--green); }
+    .hero-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 25px; box-shadow: 0 12px 35px #18332a12; }
+    .hero-card .big { font-size: 43px; font-weight: 800; color: var(--green); }
+    .hero-card p { font-size: 14px; margin: 5px 0 18px; }
+    .mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .mini-stats div { background: var(--green2); border-radius: 12px; padding: 13px; }
+    .mini-stats b { display: block; font-size: 20px; }
+    section { padding: 48px 6%; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 15px; flex-wrap: wrap; margin-bottom: 22px; }
+    h2 { font-size: 30px; margin: 0 0 8px; }
+    .sub { color: var(--muted); margin: 0; line-height: 1.5; }
+    .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin: 18px 0 22px; }
+    input, select, textarea { width: 100%; border: 1px solid #cbdacf; border-radius: 9px; padding: 12px; font: inherit; background: white; color: var(--ink); }
+    .toolbar input { flex: 1 1 230px; }
+    .toolbar select { flex: 0 1 190px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .product { background: white; border: 1px solid var(--line); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 18px #18332a08; }
+    .product-art { height: 150px; display: grid; place-items: center; font-size: 58px; background: linear-gradient(135deg, #e4f2e8, #f5f3e9); }
+    .product-info { padding: 17px; }
+    .tag { display: inline-block; font-size: 11px; font-weight: 700; color: var(--green); background: var(--green2); border-radius: 20px; padding: 5px 9px; }
+    .product h3 { margin: 10px 0 6px; font-size: 18px; }
+    .meta { color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .price-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; }
+    .price { font-size: 20px; font-weight: 800; }
+    .small-btn { padding: 9px 12px; font-size: 13px; }
+    .how { background: #edf5ef; }
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 22px; }
+    .step { background: white; border-radius: 14px; padding: 20px; border: 1px solid var(--line); }
+    .number { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--green); color: white; font-weight: 800; }
+    .step h3 { margin: 13px 0 7px; }
+    .step p { color: var(--muted); line-height: 1.55; font-size: 14px; }
+    .sell { display: grid; grid-template-columns: .8fr 1.2fr; gap: 28px; align-items: start; }
+    .sell-note { background: #103d2c; color: white; padding: 25px; border-radius: 16px; }
+    .sell-note p { color: #d5e7dc; line-height: 1.6; }
+    form { background: white; padding: 22px; border: 1px solid var(--line); border-radius: 16px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .field { margin-bottom: 13px; }
+    .full { grid-column: 1 / -1; }
+    footer { background: #103d2c; color: white; padding: 28px 6%; display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+    footer p { margin: 5px 0; color: #d5e7dc; font-size: 13px; }
+    .empty { background: white; border: 1px dashed #b8cbbd; border-radius: 12px; padding: 25px; text-align: center; color: var(--muted); grid-column: 1/-1; }
+    .notice { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    @media (max-width: 850px) { .hero, .sell { grid-template-columns: 1fr; } .grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px) { header { padding: 14px 5%; } nav { gap: 12px; } nav a { font-size: 12px; } .hero, section { padding-left: 5%; padding-right: 5%; } .grid, .steps, .form-grid { grid-template-columns: 1fr; } h2 { font-size: 25px; } .hero { padding-top: 42px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">♻ ReBuild <span>Market</span></div>
+    <nav>
+      <a href="#market">Browse materials</a>
+      <a href="#how">How it works</a>
+      <a href="#sell">Sell materials</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <div class="eyebrow">A smarter way to build</div>
+        <h1>Don't Waste It.<br><span>ReBuild With It.</span></h1>
+        <p>Buy and sell reusable leftover construction materials. Give surplus tiles, bricks, doors and more a second life — while helping projects find affordable materials.</p>
+        <div class="actions">
+          <a class="btn" href="#market">Explore materials</a>
+          <a class="btn secondary" href="#sell">List an item</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="eyebrow">Our purpose</div>
+        <div class="big">Reuse more.</div>
+        <p>Connect local sellers with buyers who need useful surplus materials.</p>
+        <div class="mini-stats">
+          <div><b>Save</b><span class="meta">Money for buyers</span></div>
+          <div><b>Reuse</b><span class="meta">Usable materials</span></div>
+          <div><b>Earn</b><span class="meta">Value for sellers</span></div>
+          <div><b>Reduce</b><span class="meta">Avoidable waste</span></div>
+        </div>
+      </div>
+    </div>
+
+    <section id="market">
+      <div class="section-head">
+        <div><div class="eyebrow">Marketplace</div><h2>Find materials for your next project</h2><p class="sub">Sample listings are for demonstration. Contact the seller to confirm details before buying.</p></div>
+      </div>
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search tiles, bricks, doors..." aria-label="Search materials">
+        <select id="category" aria-label="Filter by category">
+          <option value="all">All categories</option>
+          <option>Tiles</option><option>Bricks</option><option>Doors</option><option>Pipes</option><option>Other</option>
+        </select>
+      </div>
+      <div class="grid" id="products"></div>
+    </section>
+
+    <section class="how" id="how">
+      <div class="eyebrow">Simple process</div>
+      <h2>How ReBuild Market works</h2>
+      <p class="sub">A simple way to connect surplus materials with people who can use them.</p>
+      <div class="steps">
+        <div class="step"><div class="number">1</div><h3>Seller lists</h3><p>Add the material name, quantity, condition, location and asking price with clear photos.</p></div>
+        <div class="step"><div class="number">2</div><h3>Buyer discovers</h3><p>Search listings and compare material details, prices and pickup locations.</p></div>
+        <div class="step"><div class="number">3</div><h3>Arrange collection</h3><p>Buyer and seller discuss the details and agree on pickup or delivery independently.</p></div>
+      </div>
+    </section>
+
+    <section id="sell">
+      <div class="sell">
+        <div class="sell-note">
+          <div class="eyebrow" style="color:#a9e2bd">For sellers</div>
+          <h2>Have extra materials?</h2>
+          <p>List usable surplus materials and help someone else complete a project. Be honest about condition, quantity and age.</p>
+          <p><b>Safety first:</b> Do not list hazardous, damaged or safety-critical materials unless they have been properly checked and certified.</p>
+        </div>
+        <form id="listingForm">
+          <h2 style="font-size:23px">Add a sample listing</h2>
+          <div class="form-grid">
+            <div class="field"><label for="name">Material name *</label><input id="name" required placeholder="e.g. Ceramic floor tiles"></div>
+            <div class="field"><label for="categoryInput">Category *</label><select id="categoryInput" required><option value="">Choose</option><option>Tiles</option><option>Bricks</option><option>Doors</option><option>Pipes</option><option>Other</option></select></div>
+            <div class="field"><label for="price">Price (₹) *</label><input id="price" type="number" min="1" required placeholder="e.g. 2500"></div>
+            <div class="field"><label for="quantity">Quantity *</label><input id="quantity" required placeholder="e.g. 100 sq. ft."></div>
+            <div class="field"><label for="location">Location *</label><input id="location" required placeholder="e.g. Hadapsar, Pune"></div>
+            <div class="field"><label for="condition">Condition *</label><select id="condition" required><option value="">Choose</option><option>New / unused surplus</option><option>Good / reusable</option><option>Needs inspection</option></select></div>
+            <div class="field full"><label for="description">Description</label><textarea id="description" rows="3" placeholder="Add size, brand, age and any defects."></textarea></div>
+            <div class="field full"><button type="submit">Add listing to this demo</button><p class="notice">Demo only: listings are saved in this browser on this device. This does not publish them online.</p></div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><div class="brand">♻ ReBuild <span>Market</span></div><p>Don't Waste It. ReBuild With It.</p></div>
+    <div><p>Startup concept demo • Pune, India</p><p>Contact: hello@rebuildmarket.example</p></div>
+  </footer>
+
+  <script>
+    const starterProducts = [
+      {name:"Ceramic floor tiles",category:"Tiles",price:2500,quantity:"100 sq. ft.",location:"Hadapsar, Pune",condition:"New / unused surplus",icon:"▦",description:"Unused surplus tiles. Buyer should verify shade and dimensions."},
+      {name:"Red clay bricks",category:"Bricks",price:1800,quantity:"300 pieces",location:"Kondhwa, Pune",condition:"Good / reusable",icon:"🧱",description:"Surplus bricks; inspect before purchase."},
+      {name:"Wooden door",category:"Doors",price:1200,quantity:"1 piece",location:"Wanowrie, Pune",condition:"Good / reusable",icon:"🚪",description:"Second-hand door. Check measurements before collection."},
+      {name:"PVC water pipes",category:"Pipes",price:900,quantity:"10 lengths",location:"Fatima Nagar, Pune",condition:"New / unused surplus",icon:"〰",description:"Unused leftover pipes; confirm diameter and length."},
+      {name:"Decorative wall tiles",category:"Tiles",price:1500,quantity:"45 sq. ft.",location:"Camp, Pune",condition:"New / unused surplus",icon:"◈",description:"Extra tiles from a completed project."},
+      {name:"Metal window frames",category:"Other",price:2200,quantity:"2 frames",location:"Magarpatta, Pune",condition:"Good / reusable",icon:"▤",description:"Used frames. Buyer to check dimensions and condition."}
+    ];
+    const storageKey = "rebuildMarketListingsV1";
+    let listings = [];
+    try { listings = JSON.parse(localStorage.getItem(storageKey)) || starterProducts; }
+    catch { listings = starterProducts; }
+
+    const productsEl = document.getElementById("products");
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+    }
+    function renderProducts() {
+      const q = document.getElementById("search").value.trim().toLowerCase();
+      const cat = document.getElementById("category").value;
+      const filtered = listings.filter(item =>
+        (cat === "all" || item.category === cat) &&
+        [item.name,item.category,item.location,item.description].join(" ").toLowerCase().includes(q)
+      );
+      productsEl.innerHTML = "";
+      if (!filtered.length) {
+        productsEl.innerHTML = '<div class="empty">No matching materials found. Try another search or category.</div>';
+        return;
+      }
+      filtered.forEach(item => {
+        const card = document.createElement("article");
+        card.className = "product";
+        card.innerHTML = `
+          <div class="product-art" aria-hidden="true">${escapeHTML(item.icon || "♻")}</div>
+          <div class="product-info">
+            <span class="tag">${escapeHTML(item.category)}</span>
+            <h3>${escapeHTML(item.name)}</h3>
+            <div class="meta">${escapeHTML(item.quantity)} • ${escapeHTML(item.condition)}</div>
+            <div class="meta">📍 ${escapeHTML(item.location)}</div>
+            <p class="meta">${escapeHTML(item.description || "")}</p>
+            <div class="price-row"><span class="price">₹${Number(item.price).toLocaleString("en-IN")}</span>
+            <button class="small-btn" type="button" data-name="${escapeHTML(item.name)}">Enquire</button></div>
+          </div>`;
+        productsEl.appendChild(card);
+      });
+    }
+    document.getElementById("search").addEventListener("input", renderProducts);
+    document.getElementById("category").addEventListener("change", renderProducts);
+    productsEl.addEventListener("click", event => {
+      const btn = event.target.closest("button[data-name]");
+      if (btn) alert("Demo enquiry for: " + btn.dataset.name + "\\nIn a live website, this would contact the seller.");
+    });
+    document.getElementById("listingForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const item = {
+        name: document.getElementById("name").value.trim(),
+        category: document.getElementById("categoryInput").value,
+        price: Number(document.getElementById("price").value),
+        quantity: document.getElementById("quantity").value.trim(),
+        location: document.getElementById("location").value.trim(),
+        condition: document.getElementById("condition").value,
+        description: document.getElementById("description").value.trim() || "Seller has not added a description.",
+        icon: "♻"
+      };
+      if (!item.name || !item.category || !item.price || !item.quantity || !item.location || !item.condition) return;
+      listings.unshift(item);
+      try { localStorage.setItem(storageKey, JSON.stringify(listings)); }
+      catch { alert("Could not save on this device. The listing will remain until you refresh."); }
+      event.target.reset();
+      document.getElementById("search").value = "";
+      document.getElementById("category").value = "all";
+      renderProducts();
+      document.getElementById("market").scrollIntoView({behavior:"smooth"});
+      alert("Your sample listing has been added to this browser demo.");
+    });
+    renderProducts();
+  </script>
+</body>
+</html>
